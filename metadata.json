@@ -1,0 +1,6 @@
+{
+  "name": "Personal Productivity Dashboard",
+  "description": "A simple personal productivity app with notes, tasks, categories, calendar, reminders, global search, and secure account storage.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

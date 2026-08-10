@@ -1,0 +1,200 @@
+{
+  "entities": {
+    "users": {
+      "title": "Users",
+      "description": "User profile information and user-level settings",
+      "type": "object",
+      "properties": {
+        "displayName": { "type": "string" },
+        "email": { "type": "string" },
+        "theme": { "type": "string" },
+        "notificationPreferences": { "type": "object" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["email"]
+    },
+    "notes": {
+      "title": "Notes",
+      "description": "User notes with rich content, pinning and categorization",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "title": { "type": "string" },
+        "content": { "type": "string" },
+        "isPinned": { "type": "boolean" },
+        "categoryId": { "type": "string" },
+        "createdAt": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["userId", "title"]
+    },
+    "tasks": {
+      "title": "Tasks",
+      "description": "To-do tasks with priorities, due dates and statuses",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "title": { "type": "string" },
+        "completed": { "type": "boolean" },
+        "priority": { "type": "string" },
+        "dueDate": { "type": "string" },
+        "categoryId": { "type": "string" },
+        "reminderDateTime": { "type": "string" },
+        "recurringInterval": { "type": "string" },
+        "tags": { "type": "array" },
+        "createdAt": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["userId", "title", "completed", "priority"]
+    },
+    "categories": {
+      "title": "Categories",
+      "description": "Categories for notes and tasks",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "name": { "type": "string" },
+        "color": { "type": "string" },
+        "icon": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["userId", "name"]
+    },
+    "reminders": {
+      "title": "Reminders",
+      "description": "Timed reminders for tasks or notes",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "title": { "type": "string" },
+        "dateTime": { "type": "string" },
+        "taskId": { "type": "string" },
+        "noteId": { "type": "string" },
+        "completed": { "type": "boolean" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["userId", "title", "dateTime"]
+    },
+    "daily_goals": {
+      "title": "Daily Goals",
+      "description": "Daily habit and focus goals with streak tracking",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "title": { "type": "string" },
+        "completed": { "type": "boolean" },
+        "streak": { "type": "number" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["userId", "title", "completed"]
+    },
+    "group_workspaces": {
+      "title": "Group Workspaces",
+      "description": "Shared group workspaces for collaborative task management",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "description": { "type": "string" },
+        "inviteCode": { "type": "string" },
+        "ownerId": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["name", "inviteCode", "ownerId"]
+    },
+    "group_members": {
+      "title": "Group Members",
+      "description": "Members in a group workspace",
+      "type": "object",
+      "properties": {
+        "workspaceId": { "type": "string" },
+        "userId": { "type": "string" },
+        "userEmail": { "type": "string" },
+        "displayName": { "type": "string" },
+        "role": { "type": "string" },
+        "status": { "type": "string" }
+      },
+      "required": ["workspaceId", "userId"]
+    },
+    "group_tasks": {
+      "title": "Group Tasks",
+      "description": "Tasks assigned within a group workspace",
+      "type": "object",
+      "properties": {
+        "workspaceId": { "type": "string" },
+        "title": { "type": "string" },
+        "priority": { "type": "string" },
+        "completed": { "type": "boolean" }
+      },
+      "required": ["workspaceId", "title"]
+    },
+    "group_notes": {
+      "title": "Group Notes",
+      "description": "Shared notes in a group workspace",
+      "type": "object",
+      "properties": {
+        "workspaceId": { "type": "string" },
+        "title": { "type": "string" },
+        "content": { "type": "string" }
+      },
+      "required": ["workspaceId", "title"]
+    },
+    "group_chat": {
+      "title": "Group Chat Messages",
+      "description": "Real-time messages sent in group workspace chat",
+      "type": "object",
+      "properties": {
+        "workspaceId": { "type": "string" },
+        "senderId": { "type": "string" },
+        "senderName": { "type": "string" },
+        "text": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["workspaceId", "text"]
+    },
+    "group_activities": {
+      "title": "Group Activities",
+      "description": "Activity stream items for group events",
+      "type": "object",
+      "properties": {
+        "workspaceId": { "type": "string" },
+        "type": { "type": "string" },
+        "actorName": { "type": "string" },
+        "details": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["workspaceId", "actorName", "details"]
+    },
+    "transactions": {
+      "title": "Financial Transactions",
+      "description": "Income and expense tracking records",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "title": { "type": "string" },
+        "amount": { "type": "number" },
+        "type": { "type": "string" },
+        "category": { "type": "string" },
+        "date": { "type": "string" },
+        "paymentMethod": { "type": "string" },
+        "description": { "type": "string" },
+        "createdAt": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["userId", "title", "amount", "type", "category", "date"]
+    },
+    "budgets": {
+      "title": "Budget Goals",
+      "description": "Monthly category budget threshold limits",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "category": { "type": "string" },
+        "monthlyLimit": { "type": "number" },
+        "month": { "type": "string" },
+        "createdAt": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["userId", "category", "monthlyLimit"]
+    }
+  }
+}
